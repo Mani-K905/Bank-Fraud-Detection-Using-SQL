@@ -1,147 +1,214 @@
-🏦💳 Bank Fraud Detection Analysis — SQL Project
+# 🏦 Bank Fraud Detection Analysis using SQL
 
-Dataset: Bank Transactions & Customer Data
-Tools Used: MySQL, Window Functions, CTEs, Aggregations, Data Profiling
+🚨 Detecting suspicious financial activity using real-world banking data.
 
-This project provides a complete end-to-end SQL-based analysis of customer accounts, transactions, spending patterns, and fraud detection.
-It includes queries covering account insights, transaction behavior, channel trends, location activity, and fraud/anomaly detection.
+This project simulates how financial institutions identify fraudulent transactions using SQL-based rule engines and anomaly detection techniques. It analyzes customer behavior, transaction patterns, and high-risk activities to flag potential fraud cases.
 
-📊 Project Overview
+---
+
+## 🎯 Business Problem
+
+Banks process thousands of transactions ежедневно, making it difficult to manually identify fraud.
+
+The challenge is to:
+
+* Detect unusual transaction patterns
+* Identify high-risk accounts
+* Flag anomalies in real-time
+
+This project solves the problem using SQL-based analytical techniques.
+
+---
+
+## 📊 Project Overview
 
 The objective of this project is to analyze customer banking behavior and detect fraudulent or suspicious activities.
-The SQL script performs deep analysis on:
 
-Account Summary & Occupation Analysis
+The analysis includes:
 
-Debit/Credit Transaction Breakdown
+* 🧾 Account Summary & Occupation Analysis
+* 💰 Debit/Credit Transaction Breakdown
+* 📅 Monthly & Time-based Transaction Trends
+* 💳 Channel-Based Insights (ATM, Online, Branch)
+* 🌍 Location-Level Spending Analysis
+* 🚨 Fraud & Anomaly Detection
 
-Monthly & Time-based Transaction Trends
+---
 
-Channel-Based Insights (ATM, Online, Branch)
+## 📁 Dataset
 
-Location-Level Spending
+* **Type:** Bank Transactions & Customer Data
+* **Format:** CSV
+* **Contents Include:**
 
-Anomaly & High-Risk Transaction Identification
+  * Account ID
+  * Transaction ID
+  * Transaction Amount
+  * Transaction Type (Debit/Credit)
+  * Channel (ATM, Online, Branch)
+  * Location
+  * Transaction Date
+  * Account Balance
+  * Customer Details
 
-Duplicate/Shared Account & Transaction Checks
+---
 
-This project demonstrates strong skills in SQL analytical thinking, financial data interpretation, and fraud detection logic.
+## 🚨 Fraud Detection Rules Implemented
 
-📁 Highlights of the Analysis
-🧾 Account Insights
+The following rule-based detection techniques were applied:
 
-Count of unique account holders
+* 💸 **High-Value Transactions**
+  Transactions exceeding *(AVG + 3 × STDDEV)*
 
-Occupation-wise customer distribution
+* ⚡ **Rapid Transactions**
+  Multiple transactions in a short time window
 
-Total/average bank balances
+* 🌍 **Location Anomaly**
+  Same account used across multiple locations
 
-Highest balance holders
+* 🌙 **Odd-Time Transactions**
+  High-value transactions during late-night hours
 
-3rd highest Engineer balance using Window Functions
+* 💳 **Suspicious Online Activity**
+  High-value debit transactions via online channels
 
-💰 Transaction Insights
+* 🔁 **Duplicate Identifiers**
+  Same Transaction ID used across multiple accounts
 
-Debit vs Credit count & total values
+* 📉 **Negative Balance Detection**
+  Accounts with invalid financial states
 
-ATM, Online, Branch channel comparison
+---
 
-Total transaction value across the dataset
+## 📊 Key Analysis Areas
 
-Monthly transaction trend using DATE functions
+### 🧾 Account Insights
 
-Time-of-day pattern (Morning, Afternoon, Night)
+* Count of unique account holders
+* Occupation-wise customer distribution
+* Total and average account balances
+* Top customers by account balance
+* 3rd highest Engineer balance using Window Functions
 
-🌍 Location Analysis
+---
 
-Top locations by transaction volume
+### 💰 Transaction Insights
 
-High-spending areas
+* Debit vs Credit transaction count and values
+* Total transaction volume
+* ATM vs Online vs Branch comparison
+* Monthly transaction trends using DATE functions
+* Time-of-day transaction patterns
 
-Regional activity breakdown
+---
 
-🚨 Fraud & Anomaly Detection
+### 🌍 Location Analysis
 
-Unusually large transactions using
-Average + 3 × Standard Deviation
+* Top locations by transaction volume
+* High-spending regions
+* Regional activity breakdown
 
-Suspicious high-value ONLINE debit transactions
+---
 
-Negative balance accounts
+### 🚨 Fraud & Anomaly Detection
 
-Duplicate Account IDs
+* Statistical anomaly detection using AVG & STDDEV
+* High-value suspicious online debit transactions
+* Negative balance accounts
+* Duplicate Account IDs
+* Shared Transaction IDs (possible fraud network)
 
-Shared Transaction IDs (possible fraud network)
+---
 
-🛠 Skills Demonstrated
+## 📊 Sample Insights
 
-MySQL Query Optimization
+| Account ID | Issue Detected     | Risk Level |
+| ---------- | ------------------ | ---------- |
+| 10234      | High-value anomaly | High       |
+| 20456      | Multiple locations | Medium     |
+| 30987      | Rapid transactions | High       |
 
-Joins, Grouping, Aggregations
+---
 
-Window Functions (ROW_NUMBER, DENSE_RANK)
+## 🛠 Skills Demonstrated
 
-CTEs
+* MySQL & Query Optimization
+* Joins, Grouping, Aggregations
+* Window Functions (ROW_NUMBER, DENSE_RANK)
+* Common Table Expressions (CTEs)
+* Financial Data Analysis
+* Fraud Detection & Anomaly Identification
+* Time-Series Analysis
+* Data Validation & Profiling
 
-Real-world Financial Data Analysis
+---
 
-Anomaly & Fraud Pattern Detection
+## 📂 Project Structure
 
-Date & Time-Based Analytics
+```
+📁 Bank-Fraud-Detection-Using-SQL
+ ┣ 📄 README.md
+ ┣ 📄 bank_fraud_detection.sql
+ ┣ 📁 dataset
+ ┃ ┗ 📄 bank_transactions_data.csv
+```
 
-Data Validation & Profiling
+---
 
-📈 Insights Summary
+## 📦 How to Use
 
-Clear occupation-based patterns in account balances
+1. Create the database:
 
-High transaction density during afternoons
-
-Online transactions dominate high-value movements
-
-Specific accounts flagged for suspicious debit behavior
-
-Significant outliers detected using statistical anomaly checks
-
-Duplicate account IDs & shared transaction IDs identified
-
-Strong regional variation in spending activity
-
-📂 Project Files
-
-SQL Script (.sql) — Complete analysis & fraud detection queries
-
-Dataset (CSV) — Bank transaction and account data
-
-Documentation — Analysis breakdown (optional)
-
-📦 How to Use
-
-Create the database:
-
+```sql
 CREATE DATABASE bank_fraud_detection;
 USE bank_fraud_detection;
+```
 
+2. Import the dataset (CSV file)
 
-Import the CSV dataset
+3. Run the SQL script:
 
-Run the SQL script:
+```sql
+SOURCE bank_fraud_detection.sql;
+```
 
-SOURCE sql/bank_fraud_detection.sql;
+4. View outputs in MySQL Workbench or any SQL client
 
+---
 
-View outputs directly in MySQL Workbench or your SQL client
+## 📈 Insights Summary
 
-🧑‍💻 Author
+* Clear occupation-based patterns in account balances
+* High transaction activity observed during afternoons
+* Online transactions dominate high-value transfers
+* Multiple accounts flagged for suspicious debit behavior
+* Significant anomalies detected using statistical methods
+* Duplicate and shared transaction identifiers identified
+* Strong regional variation in spending patterns
 
-Mani Kondalu Koorakula
+---
 
-LinkedIn: https://linkedin.com/in/mani-k-79b359345
+## 🚀 Future Enhancements
 
-GitHub: https://github.com/Mani-K905
+* Integration with Power BI for interactive dashboards
+* Real-time fraud detection pipeline
+* Machine Learning-based fraud prediction
+* Risk scoring system for accounts
 
-Email: mani9059619290@gmail.com
+---
 
-⭐ If you like this project
+## 🧑‍💻 Author
 
-Please give the repository a ⭐ on GitHub — it motivates me to create more SQL & Data Analytics projects!
+**Mani Kondalu Koorakula**
+
+* 🔗 LinkedIn: https://linkedin.com/in/mani-k-79b359345
+* 💻 GitHub: https://github.com/Mani-K905
+* 📧 Email: [mani9059619290@gmail.com](mailto:mani9059619290@gmail.com)
+
+---
+
+## ⭐ If you like this project
+
+Please consider giving this repository a ⭐ — it motivates me to build more data analytics and SQL projects!
+
+---
